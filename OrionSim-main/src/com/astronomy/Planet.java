@@ -51,7 +51,7 @@ public class Planet extends Body {
         update_pe();
         return this;
     }
-
+    //added private functions for updating attributes when needed.
     private void update_ke() {
         kinetic_energy = 0.5 * mass * Vector.findMagnitude(velocity) * Vector.findMagnitude(velocity);
     }

@@ -19,12 +19,12 @@ public class Field {
 
     // Number of ms after which updates should be printed on the console.
     int update_frequency; // ms
-
-    Vector com;
+    
+    Vector com; //position of vector of mass
     long total_mass;
     long total_ke;
-    long interactive_pe;
-    long existence_pe;
+    long interactive_pe; //potential energy due to interaction between objects
+    long existence_pe; //potential energy of an object solely due to the virtue of its existence
     long total_pe;
 
     // Constructor initializes all variables
@@ -34,7 +34,7 @@ public class Field {
         this.time_step = time_step; // ms
         this.update_frequency = update_frequency; // experimental
     }
-
+    //function to calculate the position of COM during simulation
     private void update_com() {
         Vector temp = new Vector(0d, 0d, 0d);
         ;
@@ -51,7 +51,7 @@ public class Field {
         }
         total_ke = temp;
     }
-
+    //
     private void update_existencepe() {
         long temp = 0;
         for (Body b : this.objects) {
@@ -60,7 +60,7 @@ public class Field {
         existence_pe = temp;
         update_totalpe();
     }
-
+    //interactive potential energy calculated pair-wise.
     private void update_interactivepe() {
         long temp = 0;
         int n = objects.size();
@@ -75,7 +75,7 @@ public class Field {
         interactive_pe = temp;
         update_totalpe();
     }
-
+    //self-explanatory
     private void update_totalpe() {
         total_pe = interactive_pe + existence_pe;
     }
